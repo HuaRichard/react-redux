@@ -1,35 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import React from 'react';
 import Counter from './components/Counter';
-import { store } from './index';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Counter
-          value={store.getState()}
-          onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-          onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
-        />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const App = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <Counter
+        value={count}
+        onIncrement={() => setCount(count + 1)}
+        onDecrement={() => setCount(count - 1)} />
+    </div>
+  )
 }
 
 export default App;
