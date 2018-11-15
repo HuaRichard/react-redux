@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './components/Counter';
+import { store } from './index';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Counter store={this.props.store} />
+        <Counter
+          value={store.getState()}
+          onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+          onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+        />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>

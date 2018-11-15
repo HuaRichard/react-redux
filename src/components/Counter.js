@@ -1,24 +1,12 @@
 import React from 'react';
 
-class Counter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onIncrement = this.onIncrement.bind(this);
-        this.onDecrement = this.onDecrement.bind(this);
-    }
+const Counter = ({ value, onIncrement, onDecrement }) => (
+    <div>
+        <h1>{value}</h1>
+        <button onClick={onIncrement}>+</button>
+        <button onClick={onDecrement}>-</button>
+    </div>
+);
 
-    onIncrement() {this.props.store.dispatch({type: 'INCREMENT'})}
-    onDecrement() {this.props.store.dispatch({type: 'DECREMENT'})}
-
-    render() {
-        return (
-            <div>
-                <h1>{this.props.store.getState()}</h1>
-                <button onClick={this.onIncrement}>+</button>
-                <button onClick={this.onDecrement}>-</button>
-            </div>
-        )
-    }
-}
 
 export default Counter;
