@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Counter } from './Counter';
+import { Calculator } from './Calculator';
+
+const Count = React.createContext(0);
 
 const App = () => {
-  return <Counter />;
+  return (
+    <Count.Provider value={0}>
+      <Counter />
+      <br />
+      <br />
+      <Calculator />
+    </Count.Provider>
+  )
 }
 
 // class App extends Component {
@@ -30,4 +40,4 @@ const App = () => {
 //   }
 // }
 
-export default App;
+export { App, Count };
